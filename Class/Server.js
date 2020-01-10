@@ -50,5 +50,3 @@ node_ssh = require('node-ssh')
 	}
 
 }
-
-var server = new Server('test', 't', 'te')

@@ -9,7 +9,10 @@ class ServerManagerMain
        
 		this.base = Base;
 		//mysql loading to cache
-
+		Base.DbManager.queryAsync("SELECT * FROM `dc_comments` ",(a)=> {
+		
+		console.log(a)
+		})
 	}
 
 	async LoadServerToCash(InfoDb)

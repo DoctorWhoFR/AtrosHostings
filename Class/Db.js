@@ -9,22 +9,20 @@ class Db {
             host: "localhost",
             user: "root",
             password: "",
-            database: "onsetrp"
+            database: "donate"
         });
-
-    }
-
-    queryAsync(sql) {
-
-        try {
+         try {
             this.con.connect();
         } catch (error) {
             console.log(error)
         }
+    }
 
-        this.con.query(sql, function (error, results, fields) {
+    async queryAsync(sql, CallBack) {    
+
+         this.con.query(sql, async (error, results, fields) => {
             if (error) throw error;
-            return results;
+           CallBack( results)
         });
 
     }
