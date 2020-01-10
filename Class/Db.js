@@ -21,7 +21,8 @@ class Db {
     async queryAsync(sql, CallBack) {    
 
          this.con.query(sql, async (error, results, fields) => {
-            if (error) throw error;
+            if (error) 
+               return console.log(error)
            CallBack( results)
         });
 

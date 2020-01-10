@@ -31,7 +31,9 @@ node_ssh = require('node-ssh')
 			host: this.c_host,
 			username: this.c_username,
 			password: this.c_password
-		})
+		}).catch((error) =>{
+					console.log("could not connect to server ")
+				})
 	}
 
 	createServer() {
@@ -53,3 +55,5 @@ node_ssh = require('node-ssh')
 	}
 
 }
+
+exports.Server = Server 
