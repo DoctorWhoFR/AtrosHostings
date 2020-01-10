@@ -9,13 +9,13 @@ class ServerManagerMain
        
 		this.base = Base;
 		//mysql loading to cache
-		Base.DbManager.queryAsync("SELECT * FROM accounts")
 
 	}
 
 	async LoadServerToCash(InfoDb)
 	{
-        const db = new Db()
+		const db = new Db()
+		
 	}
 
 }

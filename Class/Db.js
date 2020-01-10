@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 
-class  Db{
+class Db {
 
     con;
 
@@ -11,19 +11,22 @@ class  Db{
             password: "",
             database: "onsetrp"
         });
+
     }
-    
-   async queryAsync(sql){
-        this.con.connect(function (err) {
-            if (err) throw err;
-            
-            var resultaza = this.con.query(sql, function (err, result, fields) {
-                if (err) throw err;
-                return result
-            });
-            console.log(resultaza[0] )
-            return  resultaza
+
+    queryAsync(sql) {
+
+        try {
+            this.con.connect();
+        } catch (error) {
+            console.log(error)
+        }
+
+        this.con.query(sql, function (error, results, fields) {
+            if (error) throw error;
+            return results;
         });
+
     }
 
 }
