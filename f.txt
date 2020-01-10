@@ -1,0 +1,50 @@
+ATROS API:
+
+# AUTHENTIFICATION
+# jwt obligatoire pour toute autre requête (header: authorization)
+
+#-------------------------------------------------------
+# (post) /auth #
+
+# body:
+# email
+# password
+
+# url auquels les utilsateurs envoies email et mots de passe
+# retour de l'api clef JWT Token
+#-------------------------------------------------------
+# AUTHENTIFICATION
+
+# Globals #
+# header:
+# jwt token (comprend: userid)
+
+# (GET) /servers
+# retourné la liste des serveurs de l'utilisateur (team game (onset type....))
+# Globals #
+
+# =============================
+#           PAYEMENT 
+# =============================
+
+# ADMINS API #
+# prefix: /admins
+
+# (POST) /servers
+# body:
+#
+#
+#----------------------------------------
+- check if user payement is done
+- list server (puissance ) 
+- list pack (puissance conssomer)
+- x server puissance > pack puissance 
+- ssh ---- create folder => steamcmd -- jeux du pack
+- ftp, =>>>> client (host , port , mdp )
+- list server (puissanc remain - puissance pack )
+--------archi global-----
+
+client -> api :
+				-list server (puissance ) ----------|
+				- list pack (puissance conssomer)---|--- x server remain puissance > pack puissance => ssh ---- create folder => steamcmd -- jeux du pack => ftp, =>>>> client (host , port , mdp )
+																																					
