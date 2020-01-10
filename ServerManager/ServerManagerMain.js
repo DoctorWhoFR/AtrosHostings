@@ -12,17 +12,24 @@ class ServerManagerMain
 		this.base = Base;
 		//mysql loading to cache
 		Base.DbManager.queryAsync("SELECT * FROM `dc_comments` ", async (result)=> {
-		
+			console.log(result)
 			result.forEach(object =>{
 				this.LoadServerToCash(object)
 			})
 		})
 	}
 
-	async LoadServerToCash(InfoDb)
+	LoadServerToCash(InfoDb)
 	{	
 		this.ServerId = InfoDb.Id
-		this.ServerList.push(new Server(InfoDb.Id, InfoDb.Host, InfoDb.Password, InfoDb.Username, InfoDb.Puissance, InfoDb.UsedPuissance, false))
+		this.ServerList[InfoDb.Id] = new Server(InfoDb.Id, InfoDb.Host, InfoDb.Password, InfoDb.Username, InfoDb.Puissance, InfoDb.UsedPuissance, false)
+		
+	}
+
+	AddServerToCash(Host, Password, Username, Puissance)
+	{	
+		this.ServerId++
+		this.ServerList[this.ServerId] = new Server(this.ServerId, Host, Password, Username, Puissance, 0, true)
 		
 	}
 
