@@ -8,6 +8,7 @@ node_ssh = require('node-ssh')
 	c_power = "1000"
 	c_used = "50"
 	ssh = "qsdq"
+	ListGameServer = [] // index by user and contain server array or list of user's game server
 	IsNew = false;
 	IsDeprecated = false;
 	constructor(DB_Id, X_host, X_password, X_username, x_power, x_Used, newone) {
@@ -31,9 +32,11 @@ node_ssh = require('node-ssh')
 			host: this.c_host,
 			username: this.c_username,
 			password: this.c_password
+		}).then(()=>{
+			console.log("connected to node server ")
 		}).catch((error) =>{
-					console.log("could not connect to server ")
-				})
+			console.log("could not connect to node server ")
+		})
 	}
 
 	createServer() {
