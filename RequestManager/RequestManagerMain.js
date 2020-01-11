@@ -10,11 +10,11 @@ class RequestManagerMain
 
 
     
-	constructor(Base) {
+	constructor(Base, ListenPort) {
        
 		this.base = Base
-            this.WebServer = http.createServer(this.ExectuteEvent );// on créer le server web avec le call back pour gérer les request async !
-        this.WebServer.listen(666);//port du server web api
+        this.WebServer = http.createServer(this.ExectuteEvent );// on créer le server web avec le call back pour gérer les request async !
+        this.WebServer.listen(ListenPort);//port du server web api
     }
 
     async ExectuteEvent(request, response)

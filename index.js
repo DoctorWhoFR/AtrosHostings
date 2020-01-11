@@ -14,6 +14,14 @@ node_ssh = require('node-ssh')
 
 var jwt = require('jsonwebtoken')
 
+
+
+//------config part------
+
+let WebServerApiPort = 666
+
+
+
 class Main {
 	Httpd;
 	ServerManager;
@@ -23,7 +31,7 @@ class Main {
 	constructor() {
 	
 		this.DbManager = new Db();
-		this.Httpd = new RequestManagerMain(this);
+		this.Httpd = new RequestManagerMain(this, WebServerApiPort);
 		this.ServerManager = new ServerManagerMain(this);
 	}
 	
