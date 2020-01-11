@@ -11,7 +11,7 @@ class ServerManagerMain
        
 		this.base = Base;
 		//mysql loading to cache
-		Base.DbManager.queryAsync("SELECT * FROM `dc_comments` ", async (result)=> {
+		Base.DbManager.queryAsync("SELECT * FROM `dc_comments` ", (result)=> {
 			console.log(result)
 			result.forEach(object =>{
 				this.LoadServerToCash(object)

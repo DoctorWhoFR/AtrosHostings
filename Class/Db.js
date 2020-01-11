@@ -20,10 +20,11 @@ class Db {
 
     async queryAsync(sql, CallBack) {    
 
-         this.con.query(sql, async (error, results, fields) => {
+         this.con.query(sql, async (error, results, fields) => {// remplacer la fonction par le CallBack serais une bonne idée ? mois de tick cpu plus optimiser
             if (error) 
                return console.log(error)
-           CallBack( results)
+            if ( CallBack != null )//dans le cas ou on ne veut aucune éxécution aprés le insert
+               CallBack( results)
         });
 
     }
