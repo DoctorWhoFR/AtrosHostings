@@ -25,7 +25,6 @@ node_ssh = require('node-ssh')
 	ConnectSsh() {
 		if (this.ssh != null)
             this.ssh = null
-		console.log('il est passer')
 		this.ssh = new node_ssh()
         
 		this.ssh.connect({
