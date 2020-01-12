@@ -9,7 +9,7 @@ class Db {
             host: "localhost",
             user: "root",
             password: "",
-            database: "donate"
+            database: "onsetrp"
         });
          try {
             this.con.connect();
@@ -20,10 +20,10 @@ class Db {
 
     async queryAsync(sql, CallBack) {    
 
-         this.con.query(sql, async (error, results, fields) => {// remplacer la fonction par le CallBack serais une bonne idée ? mois de tick cpu plus optimiser
+         this.con.query(sql, async (error, results, fields) => {// remplacer la fonction par le CallBack serais une bonne idï¿½e ? mois de tick cpu plus optimiser
             if (error) 
                return console.log(error)
-            if ( CallBack != null )//dans le cas ou on ne veut aucune éxécution aprés le insert
+            if ( CallBack != null )//dans le cas ou on ne veut aucune ï¿½xï¿½cution aprï¿½s le insert
                CallBack( results)
         });
 
