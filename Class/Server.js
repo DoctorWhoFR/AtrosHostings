@@ -89,7 +89,7 @@ node_ssh = require('node-ssh')
 				this.base.DbManager.queryAsync("INSERT INTO `dedicatedserver`(`Id`, `Ip`, `Username`, `Password`, `Power`, `Used`, `AllGameServer`) VALUES ("+this.c_Id+",'"+this.c_host+"','"+this.c_username+"','"+this.c_password+"',"+this.c_power+","+this.c_used +",'"+JSON.stringify(list)+"')") 	
 			}else
 			{
-				this.base.DbManager.queryAsync("UPDATE `dedicatedserver` SET `Id`="+this.c_Id+",`Ip`='"+this.c_host+"',`Username`='"+this.c_username+"',`Password`='"+this.c_password+"',`Power`="+this.c_power+",`Used`="+this.c_used +",`AllGameServer`='"+JSON.stringify(list)+"' WHERE `Id`") 	
+				this.base.DbManager.queryAsync("UPDATE `dedicatedserver` SET `Ip`='"+this.c_host+"',`Username`='"+this.c_username+"',`Password`='"+this.c_password+"',`Power`="+this.c_power+",`Used`="+this.c_used +",`AllGameServer`='"+JSON.stringify(list)+"' WHERE `Id`="+this.c_Id) 	
 			}
 			IsDeprecated = false
 			IsNew = false
