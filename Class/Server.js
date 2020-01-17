@@ -1,6 +1,7 @@
 node_ssh = require('node-ssh')
  class Server {
-
+	 
+    ListGameServer = [] // index by GameServerId
 	c_DB_Id = 0
 	c_host = "fezf"
 	c_username = "ezfzef"
@@ -8,7 +9,7 @@ node_ssh = require('node-ssh')
 	c_power = 1000
 	c_used = 0
 	ssh
-	ListGameServer = [] // index by GameServerId
+	
 	IsNew = false;
 	IsDeprecated = false;
 	constructor(DB_Id, X_host, X_password, X_username, x_power, x_Used, newone) {
@@ -21,7 +22,7 @@ node_ssh = require('node-ssh')
 		this.ConnectSsh()
 		this.IsNew = newone// ca c'est pour le loading du cache ou si on en ajoute un
 	}
-	
+
 	ConnectSsh() {
 		if (this.ssh != null)
             this.ssh = null
@@ -48,6 +49,8 @@ node_ssh = require('node-ssh')
 			return false
 		c_used = remain
 
+        this.ListGameServer[0] = "tamere"
+
 		return false
 	}
 
@@ -65,5 +68,8 @@ node_ssh = require('node-ssh')
 	}
 
 }
+
+
+
 
 exports.Server = Server 

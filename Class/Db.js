@@ -1,18 +1,18 @@
 var mysql = require('mysql');
 
+var con;
 class Db {
 
-    con;
 
     constructor() {
-        this.con = mysql.createConnection({
+        con = mysql.createConnection({
             host: "localhost",
             user: "root",
             password: "",
-            database: "onsetrp"
+            database: "atros"
         });
          try {
-            this.con.connect();
+            con.connect();
         } catch (error) {
             console.log(error)
         }
@@ -20,7 +20,7 @@ class Db {
 
     async queryAsync(sql, CallBack) {    
 
-         this.con.query(sql, async (error, results, fields) => {// remplacer la fonction par le CallBack serais une bonne id�e ? mois de tick cpu plus optimiser
+         con.query(sql, async (error, results, fields) => {// remplacer la fonction par le CallBack serais une bonne id�e ? mois de tick cpu plus optimiser
             if (error) 
                return console.log(error)
             if ( CallBack != null )//dans le cas ou on ne veut aucune �x�cution apr�s le insert
