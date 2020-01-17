@@ -7,6 +7,7 @@ var unirest = require('unirest');
 const { ServerManagerMain } = require('./ServerManager/ServerManagerMain');
 const { RequestManagerMain } = require('./RequestManager/RequestManagerMain');
 const { Db } = require('./Class/Db');
+const { ServerAPI } = require('./SERVERS/index')
 
 fs = require('fs')
 path = require('path')
@@ -32,6 +33,8 @@ class Main {
 	
 		this.DbManager = new Db();
 		this.Httpd = new RequestManagerMain(this, WebServerApiPort);
+		this.Httpd.AddEventHandler("/test/", ServerAPI.test())
+
 		this.ServerManager = new ServerManagerMain(this);
 	}
 	

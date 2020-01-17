@@ -9,7 +9,6 @@ class RequestManagerMain {
     EventHandler = [] // shoud be EventHandler["myeventName"](query)
 
     constructor(Base, ListenPort) {
-
         this.base = Base
         this.WebServer = http.createServer(this.ExectuteEvent);// on créer le server web avec le call back pour gérer les request async !
         this.WebServer.listen(ListenPort);//port du server web api
@@ -38,18 +37,22 @@ class RequestManagerMain {
                 // use post['blah'], etc.
             });
 
-        } else { // if the request is get 
+        } else { // if the request is get
 
-            if (query.stat) {
-                stat = query.stat;//exemple return way ***
-                response.writeHead(200, { "Content-Type": "text/html" });//exemple return way ***
-                response.write(`ready`);//exemple return way ***
-                response.end();//exemple return way ***
-            } else {
+            // get the path adress and params
+            const love = new URL(request.url, "http://127.0.0.1:666") 
+            console.log(love.pathname)
+
+            if (!this.EventHandler[love.pathname]) {
                 if (query.message) message = query.message; else message = "not found";//exemple return way ***
                 response.writeHead(200, { "Content-Type": "text/html" });//exemple return way ***
-                response.write(`message ${message}.`);//exemple return way ***
+                response.write(`message ${stat}.`);//exemple return way ***
                 response.end();//exemple return way ***
+            } else {
+                try {
+                    this.EventHandler[love.pathname](response)
+                } catch (error) {
+                }
             }
 
         }
@@ -67,7 +70,6 @@ class RequestManagerMain {
         */
         // need to undersetud that exemple to know what they do in future
         //shoud be EventHandler[request](query)
-        console.log(request)
        // console.log(query)
     }
 
