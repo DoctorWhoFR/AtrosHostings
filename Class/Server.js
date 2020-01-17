@@ -1,8 +1,8 @@
 node_ssh = require('node-ssh')
  class Server {
-	 
+	base
     ListGameServer = [] // index by GameServerId
-	c_DB_Id = 0
+	c_Id = 0
 	c_host = "fezf"
 	c_username = "ezfzef"
 	c_password = "ezfzef"
@@ -12,8 +12,9 @@ node_ssh = require('node-ssh')
 	
 	IsNew = false;
 	IsDeprecated = false;
-	constructor(DB_Id, X_host, X_password, X_username, x_power, x_Used, newone) {
-       
+	constructor(Base, DB_Id, X_host, X_password, X_username, x_power, x_Used, newone) {
+        this.base = Base
+		this.c_Id = DB_Id
 		this.c_host = X_host
 		this.c_password = X_password
 		this.c_username = X_username
@@ -65,6 +66,34 @@ node_ssh = require('node-ssh')
 
 	stopServer() {
 
+	}
+
+	
+	NeedDbUpdate(){
+		return this.IsNew ? this.IsNew : this.IsDeprecated
+	}
+		 = DB_Id
+		 = X_host
+		this.c_password = X_password
+		this.c_username = X_username
+		this.c_power = x_power
+		this.c_used = x_Used
+	Save(){
+		if (NeedDbUpdate())
+		{
+			if(this.IsNew){
+				var list = []
+				this.ListGameServer.forEach((key, object) =>{
+					list.psuh(key)
+				})
+				this.base.DbManager.queryAsync("INSERT INTO `dedicatedserver`(`Id`, `Ip`, `Username`, `Password`, `Power`, `Used`, `AllGameServer`) VALUES ("+this.c_Id+",'"+this.c_host+"','"+this.c_username+"','"+this.c_password+"',"+this.c_power+","+this.c_used +",'"+JSON.stringify(list)+"')") 	
+			}else
+			{
+				this.base.DbManager.queryAsync("UPDATE `dedicatedserver` SET `Id`="+this.c_Id+",`Ip`='"+this.c_host+"',`Username`='"+this.c_username+"',`Password`='"+this.c_password+"',`Power`="+this.c_power+",`Used`="+this.c_used +",`AllGameServer`='"+JSON.stringify(list)+"' WHERE `Id`") 	
+			}
+			IsDeprecated = false
+			IsNew = false
+		}
 	}
 
 }

@@ -4,14 +4,8 @@ var qs = require('querystring');
 
 const { RequestTest } = require('./Request/Test/RequestTest.js');
 
-
-
-class RequestManagerMain {
-    
-    
-   // EventHandler// shoud be EventHandler["myeventName"](query)
-    
-      base 
+class RequestManagerMain {    
+    base 
     EventHandler = []
     WebServer 
     constructor(Base, ListenPort) {

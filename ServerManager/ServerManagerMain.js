@@ -23,14 +23,14 @@ class ServerManagerMain
 	LoadServerToCash(InfoDb)
 	{	
 		this.ServerId = InfoDb.Id
-		this.ServerList[InfoDb.Id] = new Server(InfoDb.Id, InfoDb.Host, InfoDb.Password, InfoDb.Username, InfoDb.Puissance, InfoDb.UsedPuissance, false)
+		this.ServerList[InfoDb.Id] = new Server(this.base, InfoDb.Id, InfoDb.Host, InfoDb.Password, InfoDb.Username, InfoDb.Puissance, InfoDb.UsedPuissance, false)
 		
 	}
 
 	AddServerToCash(Host, Password, Username, Puissance)
 	{	
 		this.ServerId++
-		this.ServerList[this.ServerId] = new Server(this.ServerId, Host, Password, Username, Puissance, 0, true)
+		this.ServerList[this.ServerId] = new Server(this.base, this.ServerId, Host, Password, Username, Puissance, 0, true)
 		
 	}
 
