@@ -1,4 +1,3 @@
-require("../../../index.js")
 
 class RequestTest {
   
@@ -12,8 +11,7 @@ class RequestTest {
     {
         var message = ""
         console.log(query)
-        console.log("looool wtf dude")
-        base.ServerManager.AddServerToCash()
+        base.ServerManager.AddServerToCash()//exemple de call interne api ;)
           if (query.message) message = query.message; else message = "not found";//exemple return way ***
             response.writeHead(200, { "Content-Type": "text/html" });//exemple return way ***
             response.write(`message ${message}.`);//exemple return way ***

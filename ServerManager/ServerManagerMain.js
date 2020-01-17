@@ -1,4 +1,4 @@
-require(`../index.js`);
+
 const { Server } = require(`../Class/Server.js`);
 
 
@@ -13,7 +13,7 @@ class ServerManagerMain
 		this.base = Base;
 		//mysql loading to cache
 		this.base.DbManager.queryAsync("SELECT * FROM `dedicatedserver` ", (result)=> {
-			console.log(result)
+			
 			result.forEach(object =>{
 				this.LoadServerToCash(object)
 			})

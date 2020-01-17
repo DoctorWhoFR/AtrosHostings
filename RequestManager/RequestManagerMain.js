@@ -1,8 +1,6 @@
-require(`../index.js`);
 const url = require('url');
 const http = require('http');
 var qs = require('querystring');
-var _ = require('lodash');
 
 
 
@@ -24,7 +22,7 @@ class RequestManagerMain {
     }
 
     async ExectuteEvent(request, response) {
-        try {
+          try {
                var stat, query, message;
                 query = url.parse(request.url, true).query;
 
@@ -43,49 +41,24 @@ class RequestManagerMain {
     
                     request.on('end', function () {
                         var post = qs.parse(body);
-                        console.log(post['efzfez'])
-                        // use post['blah'], etc.
+                        console.log(post['efzfez'])                       
                     });
 
                } else { // if the request is get
 
-                    // /test/
-                    // stat = fezfez
                     const love = new URL(request.url, "http://" + request.headers.host)
-                    console.log( EventHandler)
                     if( EventHandler[love.pathname] != null)      
                     {
-                
                           EventHandler[love.pathname](base,query, response)
-                
                     }
-            }
-         } catch (error) {
+               }
+          } catch (error) {
              console.log(error)
           }
-        
-        /*if (query.stat) {
-            stat = query.stat;//exemple return way ***
-            response.writeHead(200, { "Content-Type": "text/html" });//exemple return way ***
-            response.write(`ready`);//exemple return way ***
-            response.end();//exemple return way ***
-        } else {
-            if (query.message) message = query.message; else message = "not found";//exemple return way ***
-            response.writeHead(200, { "Content-Type": "text/html" });//exemple return way ***
-            response.write(`message ${message}.`);//exemple return way ***
-            response.end();//exemple return way ***
-        }
-        */
-        // need to undersetud that exemple to know what they do in future
-        //shoud be EventHandler[request](query)
-       // console.log(query)
     }
 
     AddEventHandler(request, Function) {
-
-        console.log(request + Function)
         EventHandler[request] = Function    
-        console.log(EventHandler)
     }
 
 }
