@@ -72,12 +72,7 @@ node_ssh = require('node-ssh')
 	NeedDbUpdate(){
 		return this.IsNew ? this.IsNew : this.IsDeprecated
 	}
-		 = DB_Id
-		 = X_host
-		this.c_password = X_password
-		this.c_username = X_username
-		this.c_power = x_power
-		this.c_used = x_Used
+	
 	Save(){
 		if (NeedDbUpdate())
 		{
