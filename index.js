@@ -8,11 +8,6 @@ const { ServerManagerMain } = require('./ServerManager/ServerManagerMain');
 const { RequestManagerMain } = require('./RequestManager/RequestManagerMain');
 const { Db } = require('./Class/Db');
 
-
-
-const { RequestTest } = require('./RequestManager/Request/Test/RequestTest.js');
-
-
 fs = require('fs')
 path = require('path')
 node_ssh = require('node-ssh')
@@ -33,17 +28,10 @@ class Main {
 	DbManager;
 	UserManager;
 
-	constructor() {
-	
+	constructor() {	
 		this.DbManager = new Db();
 		this.Httpd = new RequestManagerMain(this, WebServerApiPort);
 		this.ServerManager = new ServerManagerMain(this);
-
-
-
-
-
-		new RequestTest(this)
 	}
 	
 }

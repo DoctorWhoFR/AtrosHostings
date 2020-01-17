@@ -3,15 +3,19 @@ const http = require('http');
 var qs = require('querystring');
 
 
+const { RequestTest } = require('./Request/Test/RequestTest.js');
 
-  var EventHandler = []
+
+
+ 
   var  base 
+  var EventHandler = []
 class RequestManagerMain {
     
     
    // EventHandler// shoud be EventHandler["myeventName"](query)
     
-   
+    
     WebServer 
     constructor(Base, ListenPort) {
         
@@ -19,6 +23,7 @@ class RequestManagerMain {
         this.WebServer = http.createServer(this.ExectuteEvent);// on créer le server web avec le call back pour gérer les request async !
         this.WebServer.listen(ListenPort);//port du server web api
         
+		new RequestTest(this)
     }
 
     async ExectuteEvent(request, response) {
@@ -47,16 +52,17 @@ class RequestManagerMain {
                } else { // if the request is get
 
                     const love = new URL(request.url, "http://" + request.headers.host)
-                    if( EventHandler[love.pathname] != null)      
-                    {
-                          EventHandler[love.pathname](base,query, response)
-                    }
+                   if( EventHandler[love.pathname] != null)      
+                   {
+                        EventHandler[love.pathname](base, query, response)
+                   }
                }
           } catch (error) {
              console.log(error)
           }
     }
 
+    
     AddEventHandler(request, Function) {
         EventHandler[request] = Function    
     }
