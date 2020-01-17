@@ -5,10 +5,10 @@ node_ssh = require('node-ssh')
 	c_host = "fezf"
 	c_username = "ezfzef"
 	c_password = "ezfzef"
-	c_power = "1000"
-	c_used = "50"
-	ssh = "qsdq"
-	ListGameServer = [] // index by user and contain server array or list of user's game server
+	c_power = 1000
+	c_used = 0
+	ssh
+	ListGameServer = [] // index by GameServerId
 	IsNew = false;
 	IsDeprecated = false;
 	constructor(DB_Id, X_host, X_password, X_username, x_power, x_Used, newone) {
@@ -38,8 +38,16 @@ node_ssh = require('node-ssh')
 		})
 	}
 
-	createServer() {
-		console.log('test')
+	GetServerById(Id){
+		return ListGameServer.includes(Id) ? ListGameServer[id] : null
+	}
+
+	createServer(GameServerId, FolderName, GameName, PowerUsed) {
+		var remain = c_used + PowerUsed
+		if( remain > c_power )
+			return false
+		c_used = remain
+
 		return false
 	}
 

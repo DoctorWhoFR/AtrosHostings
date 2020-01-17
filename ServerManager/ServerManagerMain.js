@@ -7,6 +7,7 @@ class ServerManagerMain
 	base ; // doit être la main classe pour avoir accer a tous les manager 
 	ServerList = []
 	ServerId= 0;
+	GameServerId= 0;
 	constructor(Base) {
        
 		this.base = Base;
