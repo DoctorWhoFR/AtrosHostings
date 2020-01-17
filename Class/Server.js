@@ -74,7 +74,7 @@ node_ssh = require('node-ssh')
 	}
 	
 	Save(){
-		if (NeedDbUpdate())
+		if (this.NeedDbUpdate())
 		{
 			if(this.IsNew){
 				var list = []
